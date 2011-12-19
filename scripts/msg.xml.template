@@ -1,40 +1,17 @@
-@{
-import genmsg.msgs
-import gencpp
-
-cpp_namespace = '::%s::'%(spec.package) # TODO handle nested namespace
-cpp_class = '%s_'%spec.short_name
-cpp_full_name = '%s%s'%(cpp_namespace,cpp_class)
-cpp_full_name_with_alloc = '%s<ContainerAllocator>'%(cpp_full_name)
-}@
-
-@dir(spec)
-@spec
-<compound name="@spec.package/@spec.short_name">
-+=== spec ====
-@[for k in ('constants', 'full_name', 'header_present', 'names', 'package', 'short_name', 'types')]@#
-|  @k = @spec.__dict__[k]
+<?xml version="1.0"?>
+<typelib>
+  <compound name="@spec.package/@spec.short_name" size="0" source_id="n/a">
+@[for field in spec.parsed_fields()]@#
+    <field name="@field.name" type="@field.type" offset="0"/>
 @[end for]@#
-+=============
-
-@# full text of the spec is spec.text
-
---- fields ---
-@{
-def print_field(f):
-   for k in ('name', 'type', 'base_type', 'is_builtin', 'is_header', 'is_array', 'array_len'):
-      print "%20s %s" % (k, getattr(f, k))
-}@
-@[for field in spec.parsed_fields()]
-@(print_field(field))
-@[end for]
-
---- constants ---
+@[if len(spec.constants) > 0]
+    <!-- 
+         unfortunately ros messages have no notion of "enumeration"... 
+         how shall we group these?
+    -->
+@[end if]@#
 @[for constant in spec.constants]
-@#
-@# talk to this constant object for more detailed access/manipulation
-@#
-@(type(constant))
-@constant
-@[end for]
-
+    <value symbol="@(spec.short_name)_@constant.name" value="@constant.val"/>@#
+@[end for]@#
+  </compound>
+</typelib>
