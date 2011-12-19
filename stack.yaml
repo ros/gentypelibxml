@@ -1,7 +1,7 @@
-Catkin-ProjectName: gencpp
-Version: 0.1.3
-Description: ros message generation, cpp style.
-Author: Troy Straszheim <straszheim@willowgarage.com>, Morten Kjaergaard
+Catkin-ProjectName: gentypelibxml
+Version: 0.0.0
+Description: ros message generation, typelibxml style.
+Author: Troy Straszheim <straszheim@willowgarage.com>
 Maintainer: Troy Straszheim <straszheim@willowgarage.com>
 Homepage: http://www.ros.org
 
@@ -9,8 +9,8 @@ Depends: catkin, genmsg
 
 Catkin-CopyrightType:  willowgarage
 Catkin-DebRulesType: python_distutils
-Catkin-ROS-Message-Generator: cpp
+Catkin-ROS-Message-Generator: typelibxml
 
-Release-Pull: git://github.com/wg-debs/gencpp.git
-Release-Push: git@github.com:wg-debs/gencpp.git
+Release-Pull: git://github.com/wg-debs/gentypelibxml.git
+Release-Push: git@github.com:wg-debs/gentypelibxml.git
 

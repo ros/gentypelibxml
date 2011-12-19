@@ -1,19 +1,25 @@
 cmake_minimum_required(VERSION 2.8)
-project(gencpp)
+project(gentypelibxml)
 find_package(catkin)
+find_package(genmsg)
 
-add_subdirectory(scripts)
+set(gentypelibxml_INSTALL_DIR CACHE PATH share/typelib FORCE)
 
-install_cmake_infrastructure(gencpp
-  VERSION 0.0.1
-  CFG_EXTRAS gencpp-extras.cmake
-  PYTHONPATH src
-  )
+generate_generator(typelibxml share/typelibxml)
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/gencpp "C++")
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gencpp
+# add_subdirectory(scripts)
+#
+ install_cmake_infrastructure(gentypelibxml
+   VERSION 0.0.0
+#   # CFG_EXTRAS gentypelibxml-extras.cmake
+   PYTHONPATH src
+   )
+#
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/gentypelibxml "Orocos Typelib XML")
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gentypelibxml
   DESTINATION etc/langs
-  )
+)
+#
+catkin_package(gentypelibxml)
+enable_python(gentypelibxml)
 
-catkin_package(gencpp)
-enable_python(gencpp)
