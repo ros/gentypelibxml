@@ -1,16 +1,16 @@
 <package>
-  <description brief="gencpp">
+  <description brief="gentypelib">
 
-     C++ ROS message and service generators.
+     Orocos typelib message and service generators.
 
   </description>
-  <author>Josh Faust, Troy Straszheim</author>
+  <author>Troy Straszheim</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/gencpp</url>
+  <url>meh</url>
 
   <export>
-    <rosdoc config="rosdoc.yaml"/>    
+    <rosdoc config="rosdoc.yaml"/>
   </export>
 
 </package>

@@ -5,7 +5,7 @@ find_package(genmsg)
 
 set(gentypelibxml_INSTALL_DIR CACHE PATH share/typelib FORCE)
 
-generate_generator(typelibxml share/typelibxml)
+generate_generator(typelibxml share/typelibxml "Orocos Typelib XML" .xml)
 
 # add_subdirectory(scripts)
 #

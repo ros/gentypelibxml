@@ -32,15 +32,15 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 
-## ROS message source code generation for C++
-## 
-## Converts ROS .msg files in a package into C++ source code implementations.
+## ROS message source code generation for Orocos typelib
+##
+## Converts ROS .msg files in a package into Orocos typelib xml
 
 import sys
 import genmsg.template_tools
 
-msg_template_map = { 'msg.h.template':'@NAME@.h' }
-srv_template_map = { 'srv.h.template':'@NAME@.h' }
+msg_template_map = { 'msg.xml.template':'@NAME@.xml' }
+srv_template_map = { 'srv.xml.template':'@NAME@.xml' }
 
 if __name__ == "__main__":
     genmsg.template_tools.generate_from_command_line_options(sys.argv, msg_template_map, srv_template_map)
