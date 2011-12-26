@@ -1,5 +1,5 @@
 Catkin-ProjectName: gentypelibxml
-Version: 0.0.2
+Version: 0.0.3
 Description: ros message generation, typelibxml style.
 Author: Troy Straszheim <straszheim@willowgarage.com>
 Maintainer: Troy Straszheim <straszheim@willowgarage.com>
