@@ -1,13 +1,3 @@
-@{
-import genmsg.msgs
-import gencpp
-
-cpp_namespace = '::%s::'%(spec.package) # TODO handle nested namespace
-cpp_class = '%s_'%spec.short_name
-cpp_full_name = '%s%s'%(cpp_namespace,cpp_class)
-cpp_full_name_with_alloc = '%s<ContainerAllocator>'%(cpp_full_name)
-}@
-
 @dir(spec)
 @spec
 <compound name="@spec.package/@spec.short_name">
