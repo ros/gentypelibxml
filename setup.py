@@ -6,8 +6,8 @@ from setuptools import setup
 
 setup(name='gentypelibxml',
 #      version=__version__, FIXME
-      version="1.0",
-      packages=['gentypelibxml'],
+      version="0.0.2",
+      packages=[],
       package_dir={'':'src'},
       install_requires=['genmsg'],
       scripts = ['scripts/gen_typelibxml.py'],
