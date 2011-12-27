@@ -2,46 +2,7 @@
 include_directories(${CMAKE_BINARY_DIR}/gen/typelibxml)
 
 if(@PACKAGE_NAME@_SOURCE_DIR)
-  find_program_required(GENTYPELIBXML_BIN gen_typelibxml.py PATHS ${@PACKAGE_NAME@_SOURCE_DIR}/scripts)
-  set(GENTYPELIBXML_TEMPLATE_DIR ${@PACKAGE_NAME@_SOURCE_DIR}/scripts)
+  include(${@PACKAGE_NAME@_BINARY_DIR}/cmake/gentypelibxml.cmake)
 else()
-  find_program_required(GENTYPELIBXML_BIN gen_typelibxml.py)
-  set(GENTYPELIBXML_TEMPLATE_DIR ${CMAKE_INSTALL_PREFIX}/share/gentypelibxml)
+  include(@CMAKE_INSTALL_PREFIX@/share/gentypelibxml/cmake/gentypelibxml.cmake)
 endif()
-
-# Generate .msg->.h for typelibxml
-# The generated .h files should be added ALL_GEN_OUTPUT_FILES_typelibxml
-macro(_generate_msg_typelibxml ARG_PKG ARG_MSG ARG_IFLAGS ARG_MSG_DEPS ARG_GEN_OUTPUT_DIR)
-
-  #Create input and output filenames
-  get_filename_component(MSG_NAME ${ARG_MSG} NAME)
-  get_filename_component(MSG_SHORT_NAME ${ARG_MSG} NAME_WE)
-
-  set(MSG_GENERATED_NAME ${MSG_SHORT_NAME}.h)
-  set(GEN_OUTPUT_FILE ${ARG_GEN_OUTPUT_DIR}/${MSG_GENERATED_NAME})
-
-  assert(CATKIN_ENV)
-  add_custom_command(OUTPUT ${GEN_OUTPUT_FILE}
-    DEPENDS ${GENTYPELIBXML_BIN} ${ARG_MSG} ${ARG_MSG_DEPS}
-    COMMAND ${CATKIN_ENV} ${GENTYPELIBXML_BIN} ${ARG_MSG}
-    ${ARG_IFLAGS}
-    -p ${ARG_PKG}
-    -o ${ARG_GEN_OUTPUT_DIR}
-    -e ${GENTYPELIBXML_TEMPLATE_DIR}
-    COMMENT "Generating C++ code from ${ARG_PKG}/${MSG_NAME}"
-    )
-
-  list(APPEND ALL_GEN_OUTPUT_FILES_typelibxml ${GEN_OUTPUT_FILE})
-
-endmacro()
-
-#gentypelibxml uses the same program to generate srv and msg files, so call the same macro
-macro(_generate_srv_typelibxml ARG_PKG ARG_SRV ARG_IFLAGS ARG_MSG_DEPS ARG_GEN_OUTPUT_DIR)
-  _generate_msg_typelibxml(${ARG_PKG} ${ARG_SRV} "${ARG_IFLAGS}" "${ARG_MSG_DEPS}" ${ARG_GEN_OUTPUT_DIR})
-endmacro()
-
-macro(_generate_module_typelibxml)
-  # the macros, they do nothing
-endmacro()
-
-set(gentypelibxml_INSTALL_DIR include)
