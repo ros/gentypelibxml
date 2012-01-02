@@ -9,7 +9,7 @@ generate_generator(typelibxml share/typelibxml "Orocos Typelib XML" .xml)
 
 # add_subdirectory(scripts)
 #
-install_cmake_infrastructure(gentypelibxml
+catkin_project(gentypelibxml
   VERSION 0.0.0
   CFG_EXTRAS gentypelibxml-extras.cmake
   PYTHONPATH src
