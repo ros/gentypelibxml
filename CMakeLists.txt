@@ -21,7 +21,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gentypelibxml
 )
 #
 
-catkin_package(gentypelibxml)
 enable_python(gentypelibxml)
 
 add_subdirectory(scripts)
