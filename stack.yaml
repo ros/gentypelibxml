@@ -12,6 +12,3 @@ Catkin-CopyrightType:  willowgarage
 Catkin-DebRulesType: python_distutils
 Catkin-ROS-Message-Generator: typelibxml
 
-Release-Pull: git://github.com/wg-debs/gentypelibxml.git
-Release-Push: git@github.com:wg-debs/gentypelibxml.git
-
