@@ -11,9 +11,8 @@ generate_generator(typelibxml share/typelibxml "Orocos Typelib XML" .xml)
 #
 catkin_stack()
 catkin_project(gentypelibxml
-  VERSION 0.0.0
   CFG_EXTRAS gentypelibxml-extras.cmake
-  )
+)
 
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/gentypelibxml "Orocos Typelib XML")
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gentypelibxml
